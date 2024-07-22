@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Receipt</title>
+</head>
+<body>
+    <h1>Generate Receipt</h1>
+    <form action="generate_receipt.php" method="post">
+        <label for="shop_name">Shop Name:</label>
+        <input type="text" id="shop_name" name="shop_name" required><br><br>
+
+        <label for="grand_total">Grand Total:</label>
+        <input type="text" id="grand_total" name="grand_total" required><br><br>
+
+        <div id="products">
+            <div class="product">
+                <label for="product_id[]">Product ID:</label>
+                <input type="text" name="product_id[]" required><br><br>
+                <label for="price[]">Price:</label>
+                <input type="text" name="price[]" required><br><br>
+                <label for="qty[]">Quantity:</label>
+                <input type="text" name="qty[]" required><br><br>
+                <label for="total[]">Total:</label>
+                <input type="text" name="total[]" required><br><br>
+            </div>
+        </div>
+
+        <button type="button" onclick="addProduct()">Add Another Product</button><br><br>
+
+        <button type="submit">Generate Receipt</button>
+    </form>
+
+    <script>
+        function addProduct() {
+            var productsDiv = document.getElementById('products');
+            var newProductDiv = document.createElement('div');
+            newProductDiv.className = 'product';
+            newProductDiv.innerHTML = `
+                <label for="product_id[]">Product ID:</label>
+                <input type="text" name="product_id[]" required><br><br>
+                <label for="price[]">Price:</label>
+                <input type="text" name="price[]" required><br><br>
+                <label for="qty[]">Quantity:</label>
+                <input type="text" name="qty[]" required><br><br>
+                <label for="total[]">Total:</label>
+                <input type="text" name="total[]" required><br><br>
+            `;
+            productsDiv.appendChild(newProductDiv);
+        }
+    </script>
+</body>
+</html>
